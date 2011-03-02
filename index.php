@@ -56,6 +56,14 @@ $contents = $s3->getBucket($bucket);
 
 header("Content-Type: text/xml");
 
+$image = "http://altru.istic.net/static/bucket.png";
+
+if(isset($contents["icon.png"])){
+	$image = "http://$bucket.s3.amazonaws.com/icon.png";
+}
+
+
+
 echo <<<EOW
 <?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"> 
     <channel> 
@@ -75,11 +83,11 @@ echo <<<EOW
            <itunes:email>$email</itunes:email> 
     </itunes:owner> 
     
-    <itunes:image href="http://altru.istic.net/static/bucket.png"/> 
+    <itunes:image href="$image"/> 
     
  
         <image> 
-            <url>http://altru.istic.net/static/bucket.png</url> 
+            <url>$image</url> 
             <title>$title</title> 
  
             <link>http://altru.istic.net/bucketcast/$bucket</link> 
@@ -124,9 +132,12 @@ foreach($contents as $filename => $item){
 
 	$date = date("r", $item['time']);
 	$url = "http://$bucket.s3.amazonaws.com/".urlencode($filename);
+
+        $title = htmlentities($item['name']);
+
 echo <<<EOW
 <item> 
-      <title>{$item['name']}</title> 
+      <title>$title</title> 
       <guid isPermaLink="false">{$item['hash']}</guid> 
       <pubDate>$date</pubDate> 
       <author>$author</author> 
