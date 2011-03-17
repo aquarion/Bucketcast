@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head lang="en">
-	<title>Bucketcast</title>
+	<title>Bucketcast - Create a podcast from an Amazon s3 bucket</title>
 
 <style type="text/css">
 
@@ -17,22 +17,24 @@
 <header>
 <h1>Bucketcast</h1>
 <img src="/static/bucket.png"/>
-<p>Create a podcast from an amazon s3 bucket</p>
+<h2>Create a podcast from an Amazon s3 bucket</h2>
 </header>
 <div id="main">
 <form id="form" method="POST">http://altru.istic.net/bucketcast/<input placeholder="your bucket name" id="bucket" onChange="document.getElementById('form').action='http://altru.istic.net/bucketcast/'+this.value"/><button>Go</button></form>
 
 <p>
 <h3>Limitations: </h3>
-You will need to grant "Everyone" the permission "List" in the <a href="https://console.aws.amazon.com/s3/home">Amazon AWS S3 Console</a> before this will work, [<a href="permissions_howto.html">How do I do that?</a>]<br/>
+You will need to grant "Everyone" the permission "List" in the <a href="https://console.aws.Amazon.com/s3/home">Amazon AWS S3 Console</a> before this will work, [<a href="permissions_howto.html">How do I do that?</a>]<br/>
 Bucket items have to be publically accessible (obviously)<br/>
-Trusts file extensions. (Supports mp3/ogg/mp4/aac)
+Trusts file extensions. (Supports mp3/ogg/mp4/aac)<br/>
+Uses the above bucket picture as an icon unless you add a file called "icon.png" in your bucket
 </div>
 <footer>
 	<hr/>
 	Created by <a href="http://istic.net">Istic Networks</a> to scratch an itch. Hire us to fix yours :)<br/>
-	Uses <a href="http://undesigned.org.za/2007/10/22/amazon-s3-php-class">Undesigned's S3 class</a>, 
-	icon by <a href="http://www.iconshock.com/">Iconshock</a>
+	Uses <a href="http://undesigned.org.za/2007/10/22/Amazon-s3-php-class">Undesigned's S3 class</a>, 
+	icon by <a href="http://www.iconshock.com/">Iconshock</a>,
+	Code at <a href="https://github.com/aquarion/bucketcast">github</a>
 </footer>
 </div>
 </html>
